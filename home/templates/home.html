@@ -1,0 +1,546 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <title>Home</title>
+<style>
+
+
+      .badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+  background-color: #c67605;
+}
+#lblCartCount {
+    font-size: 12px;
+    background: #ff0000;
+    color: #fff;
+    padding: 0 5px;
+    vertical-align: top;
+    margin-left: -10px;
+}
+
+
+
+       .card-img-top {
+          width: 100%;
+         height: 20vw;
+
+        object-fit:cover;
+
+       }
+
+
+
+
+      </style>
+
+
+  </head>
+
+
+
+
+
+  <body  >
+
+
+       <div class="container-fluid" >
+            <nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top shadow ">
+
+              <a href="#" class="navbar-brand">
+                  <img src="{% static 'art1.png' %}"alt="logo" loading="lazy" width="200" height="70">
+              </a>
+
+                      <div class="d-none d-xl-inline"style="width: 300px"></div>
+
+                      <input class="form-control mr-md-2  " type="search" placeholder="Search" aria-label="Search" style="width:180px;">
+                      <button class="btn btn-outline-light my-2 my-sm-0 " type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+
+
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarId" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+              </button>
+
+
+
+              <div class="collapse navbar-collapse" id="navbarId">
+                <div style="width: 200px;" >
+
+                </div>
+                  <ul class="navbar-nav mr-auto  ">
+
+
+
+
+
+                      <div style="width: 100px"></div>
+                   <li class="nav-item-inline">
+                      <a class="nav-link text-light" href="{% url 'homeview' %}">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link text-light " href="#" tabindex="-1" aria-disabled="true">About </a>
+                    </li>
+
+                    {% if loggedin is True %}
+                    <li class="nav-item">
+                      <a class="nav-link text-light " href="{% url 'logout' %}" tabindex="-1" aria-disabled="true">Logout </a>
+                    </li>
+                    <li class="nav-item">
+                         <button class="btn btn-outline-light my-2 my-sm-0" type="submit"  > <a href="{% url 'order' %}"><i class="fa" style="font-size:28px; color: white">&#xf07a;
+                  <span class='badge badge-warning' id='lblCartCount'></span></i></a></button>
+                    </li>
+                    {% else %}
+                      <li class="nav-item">
+                           <button class="btn btn-outline-light my-2 my-sm-0" type="submit"  > <a href="#"><i class="fa" style="font-size:28px; color: white">&#xf07a;
+                    <span class='badge badge-warning' id='lblCartCount'></span></i></a></button>
+                      </li>
+                      {% endif %}
+                  </ul>
+
+
+
+
+
+
+
+
+                  </div>
+
+
+          </nav>
+
+              </div>
+              
+              {% if success is True %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin:0">
+                    Registration successful
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+              {% elif success is False %}
+                     <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin:0">
+                         Use same pasword to confirm
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                         </button>
+                     </div>
+              {% endif %}
+              {% if successsug is True %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin:0">
+                    Suggestion added successfully
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+              {% elif successsug is False %}
+                     <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin:0">
+                         A problem occured during suggestion adding
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                         </button>
+                     </div>
+              {% endif %}
+              {% if successimg is True %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin:0">
+                    Image added successfully
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+              {% elif successimg is False %}
+                     <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin:0">
+                         A problem occured during uploading image
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                         </button>
+                     </div>
+              {% endif %}
+              {% if successssame is True %}
+                     <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin:0">
+                         This username is taken
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                         </button>
+                     </div>
+              {% endif %}
+
+              {% if f.errors %}
+              {{ f.errors }}
+              <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin:0">
+                Fill the form correctly
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              {% endif %}
+              {% if fl.errors %}
+              {{ fl.errors }}
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                 Invalid username or password!!
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                 </button>
+               </div>
+                 {% endif %}
+      <div class="container-fluid " style="padding: 0">
+
+          <div class="jumbotron " style="background-image: url({% static 'c2.jpg' %}); background-size: cover;  background-repeat:no-repeat;  height:400px;">
+
+              <div style="height: 200px;"></div>
+           <div style="background-color: rgba(0,0,0,0.3); width: 100%; height: 100px; text-align: center;padding-left: 50px">
+
+                    <h5 style="text-align: center;color: aliceblue">Buy Exclusive Stationary Items, Art Supplies,Crafting Materials </h5>
+                    <p style="text-align: center; color: aliceblue">Make beautiful artworks and share with us ✨</p>
+                  </div>
+
+
+      </div>
+
+
+      </div>
+
+
+
+
+
+
+     <hr>
+
+     <div class="container-fluid">
+
+      {% include 'showallh.html' %}
+
+       </div>
+
+
+       <hr>
+
+
+
+
+
+
+
+
+
+     <hr>
+
+{% if loggedin is False %}
+      <div class=" container-fluid " style=" height: 450px;">
+          <div class="row">
+
+               <div class="col-md-2 d-lg-none d-sm-inline" ></div>
+
+              <div class="col col-xl-6 col-md-8" style="padding-left: 70px">
+                  <br>
+              <h3 class=" text-dark " style=" text-align: center "> Log in to confirm your orders ! </h3>
+             <div class="container; was-validated" novalidate>
+          <form action="{% url 'login' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% if isvalid is False %}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            Invalid email or password !!!!
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {% endif %}
+
+                        <div class="form-group  " style=" padding-left: 200px" was>
+                        <label class="text-dark" >Username</label>
+                      <input type="text" class="form-control " required   style="width: 200px" name="loginname"  >
+
+                        <label class="text-dark" >Password</label>
+                         <input type="password" required class="form-control border"  style="width: 200px" name="loginpass">
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button type="submit" class="btn btn-outline-white bg-dark text-light " >Log In</button>
+
+
+
+             </div>
+                    </form>
+
+
+                  <h3 class=" text-dark " style=" text-align: center "> Or sign up to be a part of our family ❤
+                    <button type="button" class="btn btn-outline-white bg-dark text-light "data-toggle="modal" data-target="#signup">&nbsp;&nbsp;Sign up &nbsp;&nbsp;</button>
+                  </h3>
+
+
+      </div>
+                  </div>
+              <div class="col-md-2 d-lg-none d-sm-inline" ></div>
+              <div class="col col-xl-2 d-none d-xl-inline">
+
+              <div> <img style=" padding-top: 30px" src="{% static 'pic2.png' %}" ></div>
+              </div>
+              </div>
+      </div>
+
+{% endif %}
+
+
+
+
+      <hr>
+
+    <div class="container-fluid"  >
+
+      <h3  class=" text-dark " style=" text-align: center "> Here's some works done by our customers <br>Share yours too 🧡
+        </h3>
+
+        <hr>
+        <div class="card-deck" style="padding: 0;margin: 0 " >
+              <div class=row>
+                {% for item in work %}
+
+                <div class="card "  style="width: 500px">
+                  <img src="{{  item.geturl  }}" class="card-img-top" alt="..." style="object-fit:contain;">
+                  <div class="card-body">
+                      <div class="card-title">{{  item.getuname  }} <h6></h6></div>
+
+
+
+                  </div>
+
+                </div>
+                  {% endfor %}
+               </div>
+
+               <br>
+
+
+
+
+
+              </div>
+
+              </div>
+
+
+            </div>
+
+
+
+
+      <hr>
+      {% if loggedin is True %}
+      <div class="container-fluid row">
+        <form action="{% url 'suggestion' %}" method="POST" enctype="multipart/form-data" class="col-xl-6">
+          {% csrf_token %}
+                  <div class="form-group " >
+                    <div  style="padding-left:100px">
+                 <label for="sugg" ><h6> Drop your suggestion and help us to improve!</h6></label>
+                 <input type="text" class="form-control" id="sugg" name="suggestion" style="width:300px; height:80px" >
+                      <br>
+                      <button type="submit" class="btn btn-dark  center"  > Submit
+                      </button>
+                    </div>
+
+                  </div>
+
+          </form>
+          <hr>
+          <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data" class="col-xl-6">
+            {% csrf_token %}
+            <div class="form-group" >
+          <div style="padding-left:250px">
+          <label for="addphoto"><h6>Upload Your Works</h6></label>
+          <input type="file" class="form-control-file" name="addphoto" id="addphoto">
+          <br>
+          <button type="submit" class="btn btn-dark  center"  > Upload
+          </button>
+          </div>
+          </div>
+          </form>
+          </div>
+
+      {% endif %}
+      <!--modals-->
+
+
+
+ <div class="modal fade" id="signup" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" arialabelledby="signuplabel" aria-hidden="true">
+
+                        <div  class="modal-dialog modal-dialog-scrollable"  >
+                              <div class="modal-content">
+                                 <div class="modal-header">
+                                   <h5 class="modal-title" id="signuplabel">Sign Up </h5>
+                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                   <span aria-hidden="true">&times;</span>
+                                   </button>
+                                 </div>
+                                  <div class="modal-body">
+                                      <div class="container-fluid" >
+
+                                          <form action="{% url 'signup' %}" class= "was-validated" novalidate method="POST">
+                                            {% csrf_token %}
+
+
+
+
+
+                                          <div class="form-group row ">
+                                            <div class="col-xl-6">
+                                            <label > Name</label>
+                                               <input type="text" required  class="form-control " name="name"   >
+                                             </div>
+
+
+                                              <div class="col-xl-6">
+                                                  <label >User Name</label>
+
+                                                  <input type="text" required name="uname" class="form-control " pattern= "[a-z0-9]{6,}">
+                                                  <p style="font-size: 10px"> Use lowercase letter, digits, minimun 6 characters </p>
+                                              </div>
+                                            <div class="col col-xl-6">
+                                            <label >Email</label>
+                                               <input type="text" class="form-control " required name="email"  >
+                                             </div>
+                                              <div class="col-xl-6">
+                                                  <label >Phone Number</label>
+                                                   <input type="text" required class="form-control " name="phone"  >
+                                              </div>
+
+
+
+                                              <div class="col-xl-6">
+                                            <label >Password</label>
+                                               <input type="password" name="pas" required class="form-control "  pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$"
+>
+                                                  <ul style=" font-size: 10px;list-style: none"><li>A digit</li><li> minimum length 5</li>
+                                                  </ul>
+                                             </div>
+                                              <div class="col-xl-6">
+                                                  <label >Confirm Password</label>
+                                                   <input type="password" name="confpas" required class="form-control " pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$"   >
+
+
+                                              </div>
+                                              <br>
+
+
+                                           </div>
+
+                                         <div class="form-check " style="padding-right: 30px">
+                                          <input class="form-check-input  " type="checkbox" name="agree"   required>
+                                           <label class="form-check-label" for="terms" > I Agree to the <a class="text-info" data-toggle="modal" data-target="#terms">terms and conditions</a> </label>
+
+                                         </div>
+                                              <br>
+                                             <button type="submit" class="btn btn-success " >Sign Up</button>
+
+
+
+                                  </form>
+                                      </div>
+                                  </div>
+                                  <div class="modal-footer">
+
+                                      <button type="button" class="btn btn-dark" data-dismiss="modal">Close </button>
+
+                                  </div>
+
+
+
+                              </div>
+                         </div>
+                      </div>
+
+
+
+
+
+
+       <div class="modal " id="terms" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="termslabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="termslabel">Terms and Conditions</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container-fluid" style="height:40vh; ">
+                    <p>To ensure a healthy relationship between the customers and us we have created some terms and conditions.
+                        Hope you will agree with us.<br>
+                        <b>1.You can not cancel your order once it is confirmed without any valid reason.<br>
+                        2.You must give clear address for you delivery.<br>
+                        3.Check your product infront of the delivery man.<br>
+                        4.We will not take any complain about products after the departure of delevery man from your place.<br>
+                            5.If you want to sell your products you must ensure the quality.<br></b>
+
+                    </p>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+     <div class="container-fluid d-none d-lg-inline "  style="padding: 0;margin: 0">
+
+
+         <footer>
+
+          <div  style="background-image: url({% static 'c2.jpg' %}); opacity:.65; background-size: cover;height: 300px ;align-content: center">
+
+          <div class="col col-12" style="padding-left: 480px">
+
+
+              <img src="{% static 'art.png' %}" style="height: 100px; width: 350px;">
+              <p style="color: black"> A platform to buy necessary art and craft supplies <br>and recognize the hidden creativity in you! </p>
+
+
+  <p style="padding-left: 50px"><b>Email: artattack@gmail.com</b></p>
+
+ <p style="padding-left: 80px"><b>Phone: 01712345678</b></p>
+               <div style="padding-left: 122px">
+               <a href="https://www.instagram.com/" target="_blank" style="text-decoration: none; padding-bottom: 2px">
+                      <i class="fa fa-instagram"target="_blank" aria-hidden="true" style="font-size: 30px;color: black"></i></a>
+                  <a href="https://www.facebook.com/" target="_blank" style="text-decoration: none; padding-bottom: 2px">
+                      <i class="fa fa-facebook-square" aria-hidden="true" style="font-size: 30px;color: black"></i></a>
+                   <a href="https://www.twitter.com/" target="_blank" style="text-decoration: none; padding-bottom: 2px">
+                        <i class="fa fa-twitter-square" aria-hidden="true" style="font-size: 30px;color: black"></i></a>
+              </div>
+
+
+            </div>
+              </div>
+
+
+          </footer>
+
+
+      </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script type="text/javascript" src="home.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>

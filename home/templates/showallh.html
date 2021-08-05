@@ -1,0 +1,70 @@
+<h5>All Available Products</h5>
+   {% if successd is True %}
+   <div class="alert alert-success alert-dismissible fade show" role="alert">
+       Product has been deleted successfully !!!
+       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+       <span aria-hidden="true">&times;</span>
+       </button>
+   </div>
+   {% elif successd is False %}
+   <div class="alert alert-danger alert-dismissible fade show" role="alert">
+       A problem occured during product deletion !!!
+       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+       <span aria-hidden="true">&times;</span>
+       </button>
+   </div>
+   {% endif %}
+   <div class="row">
+     <div class="col col-xl-12">
+   <table class="table table-striped">
+       <thead>
+           <tr>
+
+             <th scope="col">Product Name</th>
+             <th scope="col">Brand</th>
+             <th scope="col">Description</th>
+             <th scope="col">Price</th>
+             <th scope="col">Available</th>
+             <th scope="col">Catagory</th>
+
+             <th scope="col">Image</th>
+
+             <th scope="col">Add to cart</th>
+
+           </tr>
+       </thead>
+       <tbody>
+           {% if not data %}
+               <tr>
+                   <td colspan="10" class="text-center">No data found !!!</td>
+               </tr>
+           {% else %}
+               {% for item in data %}
+                   <tr>
+
+                       <td>{{ item.getName }}</td>
+                       <td>{{ item.getBrand }}</td>
+                       <td>{{ item.getDescr}}</td>
+
+                       <td>{{ item.getPrice}}</td>
+                       <td>{{ item.getAvailable}}</td>
+                       <td>{{ item.getCat }}</td>
+
+
+                       <td><img src='{{ item.getImage }}' style="width:100px;height:100px;"></td>
+                       <td>
+
+                         <button type="button" class="btn btn-light border-dark center"  ><a href="#" style="text-decoration: none; padding-bottom: 2px">
+                          <i id="add " class="fa fa-cart-plus text-dark" style="font-size:28px; text-align:center"></i >
+
+
+                         </a></button>
+                       </td>
+
+
+                   </tr>
+               {% endfor %}
+           {% endif %}
+       </tbody>
+   </table>
+   </div>

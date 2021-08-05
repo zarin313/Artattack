@@ -1,0 +1,261 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+      <title>Order Page</title>
+       <style>
+
+
+
+      .badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+  background-color: #c67605;
+}
+#lblCartCount {
+    font-size: 12px;
+    background: #ff0000;
+    color: #fff;
+    padding: 0 5px;
+    vertical-align: top;
+
+    margin-left: -10px;
+}
+
+
+
+      </style>
+  </head>
+
+  <body>
+
+      <div class="container-fluid ">
+          <nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top shadow ">
+
+              <a href="#" class="navbar-brand">
+                  <img src="{% static 'art1.png' %}"alt="logo" loading="lazy" width="200" height="70">
+              </a>
+
+                      <div class="d-none d-xl-inline"style="width: 200px"></div>
+
+                      <input class="form-control mr-md-2  " type="search" placeholder="Search" aria-label="Search" style="width:180px;">
+                      <button class="btn btn-outline-light my-2 my-sm-0 " type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+
+
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarId" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+              </button>
+
+
+
+              <div class="collapse navbar-collapse" id="navbarId">
+                <div style="width: 200px;" >
+
+                </div>
+                  <ul class="navbar-nav mr-auto  ">
+
+
+
+
+
+                      <div style="width: 80px"></div>
+                   <li class="nav-item-inline">
+                      <a class="nav-link text-light" href="{% url 'homeview' %}">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link text-light " href="#" tabindex="-1" aria-disabled="true">About </a>
+                    </li>
+                      <li class="nav-item">
+                           <button class="btn btn-outline-light my-2 my-sm-0" type="submit"  > <a href="{% url 'order' %}"><i class="fa" style="font-size:28px; color: white">&#xf07a;
+                    <span class='badge badge-warning' id='lblCartCount'></span></i></a></button>
+                      </li>
+
+                  </ul>
+
+
+
+
+
+
+
+
+                  </div>
+
+
+          </nav>
+
+
+              </div>
+
+
+      <div class="container-fluid " style="padding: 0">
+
+       <nav aria-label="breadcrumb"  style="padding-top:100px;width: 100%">
+                <ol class="breadcrumb">
+                     <li class="breadcrumb-item"><a href="{% url 'homeview' %}">Home</a></li>
+
+                     <li class="breadcrumb-item active" aria-current="page">My Orders</li>
+                </ol>
+             </nav>
+
+      </div>
+
+      <div style="height: 30px"></div>
+
+      <div class="container-fluid ">
+          <div class="row">
+          <div class="col-xl-1 "></div>
+      <div class=" col-xl-6 col-lg-12">
+          <h3 style="text-align: center">Your ordered products</h3>
+          <br>
+ <table class="table table-striped">
+               <thead>
+                <tr>
+                  <th scope="col">Sl</th>
+                    <th scope="col">Product</th>
+
+
+                  <th scope="col">Quantity</th>
+                  <th scope="col"> Price</th>
+                  <th scope="col"> Remove</th>
+
+                </tr>
+              </thead>
+  <tbody>
+
+  </tbody>
+</table>
+
+
+      </div>
+
+
+
+        <div class="col-xl-4 col-lg-12" >
+            <h4> Checkout Summary</h4>
+            <br>
+         <table class="table " >
+  <thead>
+
+  </thead>
+  <tbody>
+    <tr>
+      <th colspan="2" scope="row">Subtotal</th>
+      <td>1180৳</td>
+
+    </tr>
+    <tr>
+      <th scope="row" >Shipping</th>
+        <td>
+         <label class="radio"><input type="radio" name="optradio" checked> Inside Dhaka</label><br>
+         <label class="radio"><input type="radio" name="optradio"> Outside Dhaka</label>
+         </td>
+      <td>60৳ <br> 100৳</td>
+    </tr>
+   <tr>
+      <th colspan="2" scope="row">Total</th>
+      <td>1240৳</td>
+
+      </tr>
+  </tbody>
+</table>
+
+
+
+            <div>
+                <form>
+               <h5> Payment Method</h5>
+                <label class="radio"><input type="radio" name="optradio1"> Cash on Delivery</label>
+                <br>
+               <label class="radio"><input type="radio" name="optradio1" checked> bkash </label> <img src="{% static 'bkash.png' %}" style="height: 20px ;width: 15px" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <input type="text" placeholder="Bkash Number" >
+                <br>
+               <label class="radio"><input type="radio" name="optradio1"> Visa Card &nbsp</label><img src="{% static 'visa.png' %}" style="height: 25px ;width: 25px">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <input type="text" placeholder="Visa Card Number">
+                <br>
+                <label class="radio"><input type="radio" name="optradio1"> Master Card &nbsp</label><img src="{% static 'master.png' %}" style="height: 25px ;width: 28px">&nbsp;&nbsp;&nbsp;
+                <input type="text" placeholder="Master Card Number">
+                <br><br>
+                <h5>Phone Number:</h5>
+                 <input type="tel" required>
+                <h5>Delivery Address:</h5>
+                <textarea  style=" width:300px ; height:100px "required ></textarea>
+             <br>
+                <button type="submit" class="btn btn-dark " id="confirm">Confirm Order</button>
+                 </form>
+
+
+          </div>
+         </div>
+
+
+          </div>
+
+      </div>
+
+       <hr>
+
+
+
+       <div class="container-fluid d-none d-lg-inline "  style="padding: 0;margin: 0">
+
+
+           <footer>
+
+            <div  style="background-image: url({% static 'c2.jpg' %}); opacity:.65; background-size: cover;height: 300px ;align-content: center">
+
+            <div class="col col-12" style="padding-left: 480px">
+
+
+                <img src="{% static 'art.png' %}" style="height: 100px; width: 350px;">
+                <p style="color: black"> A platform to buy necessary art and craft supplies <br>and recognize the hidden creativity in you! </p>
+
+
+    <p style="padding-left: 50px"><b>Email: artattack@gmail.com</b></p>
+
+   <p style="padding-left: 80px"><b>Phone: 01712345678</b></p>
+                 <div style="padding-left: 122px">
+                 <a href="https://www.instagram.com/" target="_blank" style="text-decoration: none; padding-bottom: 2px">
+                        <i class="fa fa-instagram"target="_blank" aria-hidden="true" style="font-size: 30px;color: black"></i></a>
+                    <a href="https://www.facebook.com/" target="_blank" style="text-decoration: none; padding-bottom: 2px">
+                        <i class="fa fa-facebook-square" aria-hidden="true" style="font-size: 30px;color: black"></i></a>
+                     <a href="https://www.twitter.com/" target="_blank" style="text-decoration: none; padding-bottom: 2px">
+                          <i class="fa fa-twitter-square" aria-hidden="true" style="font-size: 30px;color: black"></i></a>
+                </div>
+
+
+              </div>
+                </div>
+
+
+            </footer>
+
+
+        </div>
+
+
+
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script type="text/javascript" src="order.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>

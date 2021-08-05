@@ -1,0 +1,45 @@
+<h5>Orders</h5>
+<hr>
+<div class="row">
+  <div class="col col-xl-12">
+<table class="table table-striped">
+    <thead>
+        <tr>
+
+          <th scope="col">Product Name</th>
+
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Username</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Address</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% if not order %}
+            <tr>
+                <td colspan="10" class="text-center">No data found !!!</td>
+            </tr>
+        {% else %}
+            {% for item in order %}
+                <tr>
+
+                    <td>{{ order.getName }}</td>
+                    <td>{{ order.getPrice }}</td>
+                    <td>{{ item.getQuantity}}</td>
+                    <td>{{ item.getUsername}}</td>
+                    <td>{{ item.getPhone}}</td>
+                    <td>{{ item.getAddress}}</td>
+
+
+
+
+
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+</div>
+</div>
